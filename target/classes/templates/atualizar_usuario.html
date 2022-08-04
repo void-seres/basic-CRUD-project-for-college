@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="utf8">
+<title>Atualizar Usuario</title>
+</head>
+
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+ 
+<body>
+	<div class="container">
+		<h1>Atualizar Usuário</h1>
+		<hr>
+		
+		<form action="#" th:action="@{/cadastrarUsuario}" th:object="${usuario}" method="POST">
+		<section>
+			<!-- Campo do CPF escondido -->
+			<input type="hidden" th:field="*{CPF}"/>
+			
+			<label>Nome</label>
+			<input type="text" th:field="*{nome}" placeholder="Nome do Usuário" class="form-control mb-4 col-4">
+			<label>Email</label>
+			<input type="email" th:field="*{email}" placeholder="Email do Usuário" class="form-control mb-4 col-4">
+			<label>Telefone</label>
+			<input type="number" th:field="*{telefone}" placeholder = "Telefone do Usuário" class="form-control mb-4 col-4">
+			<label>Tipo Sanguíneo</label>
+			<select th:field="*{tipoSanguineo}" class="form-control mb-4 col-4">
+				<option th:each="tiposSanguineo : ${tiposSanguineo}"
+						th:text="${tiposSanguineo.tipo}"
+						th:value="${tiposSanguineo}"></option>
+			</select>
+			<label>Sexo</label>
+			<select th:field="*{sexo}" class="form-control mb-4 col-4">
+				<option th:each="sexos : ${sexos}"
+						th:text="${sexos.sexo}"
+						th:value="${sexos}"></option>
+			</select>
+			<label>Data de nascimento</label>
+			<input type="date" th:field="*{dataDeNascimento}"  placeholder="Data de Nascimento" class="form-control mb-4 col-4">
+			<label>Senha</label>
+			<input type="password" th:field="*{senha}" placeholder="Senha" class="form-control mb-4 col-4">
+			<label>Funcionário?</label>
+			<input type="checkbox" th:field="*{funcionario}" class="form-control mb-4 col-4">
+			<div class="row">
+				<div class="col-2"><a th:href="@{/}" class="btn btn-secondary btn-sm ">Voltar</a></div>
+				<button type="submit" class="btn btn-info col-2">Atualizar Usuário</button>	
+			</div>
+		</section>
+		</form>
+		
+		<!-- <div>Teste
+			Welcome <span sec:authentication="principal.username"> User</span>
+			<p sec:authentication='principal.authorities'></p>
+			<ul class="nav navbar-nav">
+				<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+			</ul>
+			TEST
+			<div sec:authorize="hasAuthority('ROLE_FUNCIONARIO')">Has Authority DOADOR</div>
+			<div sec:authorize="hasAuthority('ROLE_DOADOR')">Has Authority DOADOR</div>
+			<div sec:authorize="hasRole('ROLE_FUNCIONARIO')">Has Role ROLE_FUNCIONARIO</div>
+			<div sec:authorize="hasRole('ROLE_DOADOR')">Has Role ROLE_DOADOR</div>
+			<div sec:authorize="hasRole('FUNCIONARIO')">Has Role FUNCIONARIO</div>
+			<div sec:authorize="hasRole('DOADOR')">Has Role DOADOR</div>
+		</div> -->
+		
+	</div>
+</body>
+
+</html>

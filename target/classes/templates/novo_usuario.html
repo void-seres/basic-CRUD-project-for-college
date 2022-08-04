@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf8">
+<title>Cadastrar Usuários</title>
+
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+
+</head>
+<body>
+	<div class="container my-1">
+		<br>
+		<h1>Cadastrar Usuário</h1>
+		<hr>
+		
+		<div class="container">
+			<form action="#" th:action="@{/cadastrarUsuario}" th:object="${usuario}" method="POST">
+			<section>
+				<div class="row">
+					<div class="col-lg">
+						<label>C.P.F.</label>
+						<input type="number" th:field="*{CPF}" class="form-control mb-4">
+					</div>
+					<div class="col-lg">
+						<label>Nome</label>
+						<input type="text" th:field="*{nome}" placeholder="Nome do Usuário" class="form-control mb-4">
+					</div>
+				</div>
+				
+				<div class="row justify-content-start">
+					<div class="col-lg">
+						<label>Email</label>
+						<input type="email" th:field="*{email}" placeholder="Email do Usuário" class="form-control mb-4">
+					</div>
+					<div class="col-lg">
+						<label>Telefone</label>
+						<input type="number" th:field="*{telefone}" class="form-control mb-4">
+					</div>
+				</div>
+				
+				<div class="row justify-content-start">
+					<div class="col">
+						<label>Tipo Sanguíneo</label> 
+						<select th:field="*{tipoSanguineo}" class="form-control mb-4"><!-- mb : margin botton -->
+							<option th:each="tiposSanguineo : ${tiposSanguineo}" th:text="${tiposSanguineo.tipo}" th:value="${tiposSanguineo}"></option>
+						</select>
+					</div>
+					<div class="col">
+						<label>Sexo</label> 
+						<select th:field="*{sexo}" class="form-control mb-4"><option th:each="sexos : ${sexos}" th:text="${sexos.sexo}"th:value="${sexos}"></option>
+						</select>
+					</div>
+					<div class="col">
+						<label>Data de nascimento</label>
+						<input type="date" th:field="*{dataDeNascimento}"  placeholder="Data de Nascimento" class="form-control mb-4">
+					</div>
+				</div>
+				
+				<div class="row justify-content-start">
+					<label class="ml-3">Senha</label>
+					<input type="password" th:field="*{senha}" placeholder="Senha" class="form-control mb-4 col-2">
+					
+					<label class="ml-5">Funcionário?</label>
+					<input type="checkbox" th:field="*{funcionario}" class="form-control mb-4 col-1">			
+				</div>
+				<div class="row">
+					<div class="col-8"><a th:href="@{/}" class="btn btn-secondary btn-sm ">Voltar</a></div>
+					<div align="right" class="col-4"><button type="submit" class="btn btn-info">Cadastrar Usuário</button></div>
+				</div>
+				
+				
+			</section>
+			</form>
+			
+		</div>
+	</div>
+</body>
+</html>

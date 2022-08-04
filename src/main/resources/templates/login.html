@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf8">
+<title>Login</title>
+
+<!-- Bootstrap e Bootstrap Icons -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+	
+</head>
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h1>Login</h1>
+
+				<form th:action="@{/login}" method="post">
+					<!-- Mensagem de Erro -->
+					<div th:if="${param.error}">
+						<div class="alert alert-danger">CPF ou Senha invalída.</div>
+					</div>
+
+					<!-- Mensagem de Logout -->
+					<div th:if="${param.Logout}">
+						<div class="alert alert-info">Você saiu.</div>
+					</div>
+
+					<div class="form-group">
+						<label for="username">CPF :</label> <input type="text"
+							class="form-control" id="username" name="username"
+							placeholder="CPF" autofocus="autofocus">
+					</div>
+
+					<div class="form-group">
+						<label for="password">Senha :</label> <input type="password"
+							class="form-control" id="password" name="password"
+							placeholder="Senha" autofocus="autofocus">
+					</div>
+
+					<div class="form-group row">
+							<div class="col-3 col-sm-offset-3">
+								<input type="submit" name="login-submit" id="login-submit"
+									class="form-control btn btn-primary" value="Entrar">
+							</div>
+					</div>
+				</form>
+
+				<div class="row">
+					<div align="left" class="col-7">
+						<a th:href="@{/}" class="btn btn-secondary btn-sm ">Voltar</a>
+					</div>
+					<div>
+						Novo Usuário? <a href="/" th:href="@{/formularioDeNovoUsuario}"
+							class="btn btn-success btn-sm ">Registre-se</a>
+					</div>
+				</div>
+			</div>
+
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
